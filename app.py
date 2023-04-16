@@ -9,6 +9,9 @@ app = Flask(__name__)
 app.config["UPLOAD_FOLDER"] = os.path.join("static", "uploads")
 app.config["ALLOWED_EXTENSIONS"] = {"jpg", "jpeg", "png", "gif"}
 
+# Load the model during app initialization
+model = tf.keras.applications.MobileNetV2(weights="imagenet")
+
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in app.config["ALLOWED_EXTENSIONS"]
 
@@ -38,7 +41,6 @@ def index():
 def result(filename):
     filepath = os.path.join(app.config["UPLOAD_FOLDER"], filename)
     img = load_image(filepath)
-    model = tf.keras.applications.MobileNetV2(weights="imagenet")
     predictions = model.predict(img)
     labels = tf.keras.applications.mobilenet_v2.decode_predictions(predictions, top=5)
     return render_template("result.html", filename=filename, labels=labels)

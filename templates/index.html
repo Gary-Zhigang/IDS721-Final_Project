@@ -4,11 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Recognition</title>
+    <style>
+        /* Hide the default file input */
+        .hidden-file-input {
+            display: none;
+        }
+
+        /* Style the custom file input button */
+        .custom-file-input {
+            display: inline-block;
+            padding: 6px 12px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 4px;
+        }
+    </style>
+    <script>
+        function handleFileSelect(evt) {
+            // Get the selected file
+            const file = evt.target.files[0];
+            if (file) {
+                // Update the file name display
+                document.getElementById("file-name-display").textContent = file.name;
+            } else {
+                // Clear the file name display if no file is selected
+                document.getElementById("file-name-display").textContent = "";
+            }
+        }
+    </script>
 </head>
 <body>
-    <h1>Upload an image for recognition</h1>
-    <form action="/" method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*" required>
+    <h1>Image Recognition</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" class="hidden-file-input" accept="image/*" onchange="handleFileSelect(event)">
+        <label for="file" class="custom-file-input">Choose File</label>
+        <span id="file-name-display"></span>
+        <br><br>
         <input type="submit" value="Upload">
     </form>
 </body>
