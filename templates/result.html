@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognition Result</title>
+</head>
+<body>
+    <h1>Recognition Result</h1>
+    <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image" style="max-width: 500px;">
+    <h2>Labels:</h2>
+    <ul>
+        {% for label in labels[0] %}
+            <li>{{ label[1] }} ({{ label[2] * 100 | round(2) }}%)</li>
+        {% endfor %}
+    </ul>
+    <a href="{{ url_for('index') }}">Try another image</a>
+</body>
+</html>
