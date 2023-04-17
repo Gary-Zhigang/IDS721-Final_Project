@@ -1,19 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Recognition Result</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 50px;
+        }
+
+        img {
+            max-width: 50vw;
+            max-height: 50vh;
+            display: inline-block;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #0069D9;
+        }
+    </style>
 </head>
 <body>
     <h1>Image Recognition Result</h1>
-    <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded image" width="224" height="224">
-    <h2>Top 5 Predicted Labels:</h2>
-    <ul>
-        {% for label in labels[0] %}
-            <li>{{ label[1] }}: {{ "%.2f"|format(label[2] * 100) }}%</li>
-        {% endfor %}
-    </ul>
-    <a href="{{ url_for('index') }}">Go Back</a>
+    <div class="result">
+        <img src="{{ url_for('static', filename='uploads/' + filename) }}" alt="Uploaded Image">
+        <h2>Top Predictions:</h2>
+        <ul>
+            {% for label in labels[0] %}
+                <li>{{ label[1] }}: {{ "%.2f"|format(label[2] * 100) }}%</li>
+            {% endfor %}
+        </ul>
+        <a href="{{ url_for('index') }}">Try another image</a>
+    </div>
 </body>
 </html>

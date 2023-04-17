@@ -5,43 +5,70 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Image Recognition</title>
     <style>
-        /* Hide the default file input */
-        .hidden-file-input {
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin-top: 50px;
+            margin-bottom: 50px;
+        }
+
+        form {
+            display: inline-block;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="file"] {
             display: none;
         }
 
-        /* Style the custom file input button */
-        .custom-file-input {
-            display: inline-block;
-            padding: 6px 12px;
+        label {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
             cursor: pointer;
-            background-color: #007bff;
-            color: #fff;
-            border-radius: 4px;
+            border-radius: 5px;
+        }
+
+        input[type="submit"] {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #28A745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+
+        p {
+            margin-top: 10px;
         }
     </style>
-    <script>
-        function handleFileSelect(evt) {
-            // Get the selected file
-            const file = evt.target.files[0];
-            if (file) {
-                // Update the file name display
-                document.getElementById("file-name-display").textContent = file.name;
-            } else {
-                // Clear the file name display if no file is selected
-                document.getElementById("file-name-display").textContent = "";
-            }
-        }
-    </script>
 </head>
 <body>
     <h1>Image Recognition</h1>
-    <form method="POST" enctype="multipart/form-data">
-        <input type="file" name="file" id="file" class="hidden-file-input" accept="image/*" onchange="handleFileSelect(event)">
-        <label for="file" class="custom-file-input">Choose File</label>
-        <span id="file-name-display"></span>
-        <br><br>
+    <form action="/" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" id="file" accept="image/*" onchange="updateFilename()">
+        <label for="file">Choose file</label>
+        <p id="filename">No file chosen</p>
         <input type="submit" value="Upload">
     </form>
+    <script>
+        function updateFilename() {
+            const fileInput = document.getElementById('file');
+            const filenameDisplay = document.getElementById('filename');
+            filenameDisplay.textContent = fileInput.files[0].name;
+        }
+    </script>
 </body>
 </html>
