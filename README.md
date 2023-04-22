@@ -13,23 +13,23 @@ This is the final project for the course IDS721, it is an image recognition web 
 ## Function Display
 ___Home Page:___   
 
-<img src="https://github.com/Gary-Zhigang/IDS721-Final_Project/blob/main/images/p1.png" alt="Your image description" width="300" height="100">
+<img src="https://github.com/Gary-Zhigang/IDS721-Final_Project/blob/main/images/p1.png" alt="Your image description" width="600" height="400">
 
 ___Result Page:___  
 
-<img src="https://github.com/Gary-Zhigang/IDS721-Final_Project/blob/main/images/p2.png" alt="Your image description" width="500" height="300"> 
+<img src="https://github.com/Gary-Zhigang/IDS721-Final_Project/blob/main/images/p2.png" alt="Your image description" width="600" height="600"> 
 
 ## Docker 
 ___Local:___   
 
-After you clone this project, to build the Docker in local, you could type ``docker build -t get-songs``, and then type ``docker image ls`` to verify the images you get, finally, typing ``docker run -p 8080:8080 get-songs`` to run the application.
+After you clone this project, to build the Docker in local, you could type ``docker build -t image-recognition``, and then type ``docker image ls`` to verify the images you get, finally, typing ``docker run -p 8080:8080 image-recognition`` to run the application.
 
 ___DockerHub:___  
 
-You could also run the Docker without cloning this project, you could pull the image from the **DockerHub** by typing ``docker pull zhiw803/get-songs:latest``, and then typing ``docker run -p 8080:8080 zhiw803/get-songs:latest`` to run the application.
+You could also run the Docker without cloning this project, you could pull the image from the **DockerHub** by typing ``docker pull zhiw803/image-recognition:latest``, and then typing ``docker run -p 8080:8080 zhiw803/image-recognition:latest`` to run the application.
 
 ## AWS App Runner
 
 You could click [this link](https://sy2ueazacf.us-east-1.awsapprunner.com) to explore the image recognition website, which is deployed on the AWS App Runner.
 
-<img src="https://github.com/Gary-Zhigang/IDS721-Final_Project/blob/main/images/p3.png" alt="Your image description" width="500" height="300"> 
+<img src="https://github.com/Gary-Zhigang/IDS721-Final_Project/blob/main/images/p3.png" alt="Your image description" width="750" height="350"> 
